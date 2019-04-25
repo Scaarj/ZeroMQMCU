@@ -33,7 +33,6 @@ void loop() {
 }
 
 #elif defined SUBSCRIBER_SOCKET
-
 byte mac[] = { 0x16, 0xD5, 0x98, 0x5B, 0x56, 0xEF };
 zmq::socket_t subscriber(ZMQ_SUB);
 _IPAddress  addr(192, 168, 1, 107);
