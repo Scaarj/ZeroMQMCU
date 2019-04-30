@@ -91,9 +91,9 @@ int sub_t::recv(char *&string)
         }
     }
 
-    //PORTD |= B10000000;
+    PORTD |= B10000000;
     int sz_full = client->recv_sub(string);
-    //PORTD |= B10000000;
+    PORTD &= (~B10000000);
 
     return sz_full;
 }

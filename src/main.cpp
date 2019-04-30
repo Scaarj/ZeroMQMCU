@@ -22,14 +22,17 @@ void setup() {
     Serial.print("Start publisher");
     publisher.bind(port);
     randomSeed(analogRead(0));
+
+    DDRD |= B10000000;
+    PORTD &= (~B10000000);
+
 }
 
 void loop() {
-    int rand_num = random(0, 9);
-    char msg[42];
-    sprintf(msg, "title%d Hello anyone subscribed on title%d!", rand_num, rand_num);
+    char *msg = "head1 1234";
+    PORTD |= B10000000;
     publisher.send(msg);
-    delay(500);
+    PORTD &= (~B10000000);
 }
 
 #elif defined SUBSCRIBER_SOCKET
@@ -46,18 +49,23 @@ void setup() {
     }
 
     Serial.print("Connect subscribe");
-    subscriber.setsockopt(ZMQ_SUBSCRIBE, "title1", 6);
+    subscriber.setsockopt(ZMQ_SUBSCRIBE, "head1", 5);
     subscriber.connect(addr, port);
 
     for(int i = 0; i < 8; ++i) {
         w5500.writeSnMR(i, 0x20);
     }
+
+    DDRD |= B10000000;
+    PORTD &= (~B10000000);
 }
 
 void loop() {
     char *msg;
+    //PORTD |= B10000000;
     subscriber.recv(msg);
-    Serial.println(msg);
+    //PORTD &= (~B10000000);
+    //Serial.println(msg);
     zmq::free_msg(msg);
 }
 #endif

@@ -237,17 +237,14 @@ void pub_t::check_message()
     }
 }
 
-int pub_t::form_message(char *&string)
+int pub_t::form_message(char *string)
 {
     size_t sz_subscribe = 0;
-
+    size_t sz_string = strlen(string);
     // Finding space - its end of subscribe-string
-    while((int)(*(string + sz_subscribe)) != 32 && sz_subscribe < strlen(string)) {
+    while((int)(*(string + sz_subscribe)) != 32 && sz_subscribe < sz_string) {
         sz_subscribe++;
     }
-
-    if(sz_subscribe == 0)
-        return -1;
 
     char subscribe[sz_subscribe + 1];
     memcpy(subscribe, string, sz_subscribe);

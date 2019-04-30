@@ -22,7 +22,7 @@ private:
 
     void check_sockets();
     void check_message();
-    int form_message(char *&string);
+    int form_message(char *string);
 
     void drop_message(ZeroMQClient *&ptr_zmq_socket);
     void subscribe(ZeroMQClient *&ptr_zmq_socket);
