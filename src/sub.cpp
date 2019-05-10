@@ -7,6 +7,11 @@ sub_t::sub_t()
 
 }
 
+sub_t::~sub_t()
+{
+
+}
+
 int sub_t::connect(const _IPAddress &_address, const uint16_t &_port)
 {
     // Safe socket to list and try connect
@@ -170,11 +175,6 @@ void sub_t::check_sockets()
 socket_type sub_t::type()
 {
     return ZMQ_SUB;
-}
-
-my_list<ZeroMQClient *> &sub_t::socket_list()
-{
-    return list_socket;
 }
 
 int sub_t::subscribe(ZeroMQClient *&socket, const option_type &_opt,

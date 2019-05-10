@@ -31,12 +31,9 @@ enum statement {
 class ZeroMQClient : public EthernetClient {
 public:
     ZeroMQClient() : m_state(not_authorized) {}
-    ZeroMQClient(const _IPAddress &address, const uint16_t &port) : m_state(not_authorized)
-    {
-        _address = address;
-        _destport = port;
-        m_state = not_authorized;
-    }
+    ZeroMQClient(const _IPAddress &address,
+                 const uint16_t &port) :
+        m_state(not_authorized), EthernetClient(address, port) {}
     virtual ~ZeroMQClient() { stop(); }
     ZeroMQClient(EthernetClient client) : EthernetClient(client) {}
 
@@ -59,7 +56,6 @@ public:
     statement state() const;
 
     void setState(const statement &state);
-    //int recv_all(uint8_t *&message);
     int recv_sub(char *&message);
     int send_pub(uint8_t *message, uint16_t len);
     int send(uint8_t *message, uint16_t len);
