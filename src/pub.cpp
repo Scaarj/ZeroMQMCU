@@ -270,7 +270,7 @@ int pub_t::form_message(char *string)
 
         if(mask_socket & (1 << sock_client)) {
             if(client->state() == statement::authorized) {
-                sz_msg = client->send_pub(string, strlen(string));
+                sz_msg = client->send_pub(string, sz_string);
             }
         }
         it++;
