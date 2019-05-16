@@ -11,7 +11,6 @@ public:
     virtual int send(char *string) override;
     virtual int recv(char *&string) override;
     virtual socket_type type() override;
-    virtual my_list<ZeroMQClient*> &socket_list() override;
 private:
     my_list<ZeroMQClient*>    list_socket;
    // EthernetServer server;

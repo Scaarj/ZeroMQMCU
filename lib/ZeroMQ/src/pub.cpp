@@ -4,6 +4,10 @@
 pub_t::pub_t()
 {
     map_subscribes = new my_map<char*, uint8_t>;
+}
+
+pub_t::~pub_t()
+{
 
 }
 
@@ -62,14 +66,6 @@ int pub_t::authorize(ZeroMQClient *&ptr_zmq_socket)
         case statement::property_send:
             ptr_zmq_socket->setState(statement::authorized);
         case statement::authorized:
-            //_startMillis = millis();
-            // Waiting 1 second for message available.
-            // Without this condition we dont read subscribe message on first iteration,
-            // Because pub_t::send is not blocking function.
-            // In this case, if you use pair sub_t and pub_t sockets in one iteration
-            // you will never get subscribe message.
-          //  while (!ptr_zmq_socket->available() || (_startMillis - millis()) < 1000) {
-          //  }
         default:
             return -1;
             break;
@@ -171,11 +167,6 @@ void pub_t::unsubscribe_all(ZeroMQClient *ptr_zmq_socket)
     }
 
     return 0;
-}
-
-my_list<ZeroMQClient*> &pub_t::socket_list()
-{
-    return list_socket;
 }
 
 socket_type pub_t::type()

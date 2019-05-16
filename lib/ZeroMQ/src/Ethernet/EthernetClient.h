@@ -8,6 +8,8 @@ public:
     EthernetClient();
     ~EthernetClient() {}
     EthernetClient(uint8_t sock);
+    EthernetClient(_IPAddress address, uint16_t destport) :
+        _address(address), _destport(destport) {}
 
     uint8_t status();
     virtual int connect(_IPAddress ip, uint16_t port);

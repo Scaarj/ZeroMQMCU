@@ -60,11 +60,6 @@ int socket_base_t::close()
     return -1;
 }
 
-my_list<ZeroMQClient *> &socket_base_t::socket_list()
-{
-
-}
-
 socket_type socket_base_t::type()
 {
     return socket_type::ZMQ_UNKNOW;

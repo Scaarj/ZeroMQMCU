@@ -25,7 +25,6 @@ public:
     virtual int setsockopt(option_type _opt, const char *_optval, uint8_t _optvallen);
     virtual int close();
 
-    virtual my_list<ZeroMQClient*> &socket_list();
     virtual socket_type type();
 
     _IPAddress address() const;
