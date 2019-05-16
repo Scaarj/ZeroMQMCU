@@ -81,7 +81,7 @@ void W5500Class::send_data_processing_offset(SOCKET s, uint16_t data_offset, con
     writeSnTX_WR(s, ptr);
 }
 
-uint16_t W5500Class::write_data_pub(SOCKET _sock, uint8_t *_buf, uint8_t _len)
+uint16_t W5500Class::write_data_pub(SOCKET _sock, uint8_t *&_buf, uint8_t _len)
 {
     uint16_t ptr = w5500.readSnTX_WR(_sock);
 

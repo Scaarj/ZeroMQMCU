@@ -12,10 +12,8 @@
 #include "Dhcp.h"
 
 // XXX: don't make assumptions about the value of MAX_SOCK_NUM.
-uint8_t EthernetClass::_state[MAX_SOCK_NUM] = { 0, };
-uint16_t EthernetClass::_server_port[MAX_SOCK_NUM] = { 0, };
-
-
+extern uint8_t EthernetClass::_state[MAX_SOCK_NUM] = { 0, };
+extern uint16_t EthernetClass::_server_port[MAX_SOCK_NUM] = { 0, };
 
 #if defined(WIZ550io_WITH_MACADDRESS)
 int EthernetClass::begin(void)
@@ -206,4 +204,4 @@ char* EthernetClass::hostName(){
     return _hostName;
 }
 
-EthernetClass Ethernet;
+EthernetClass ZMQEthernet;

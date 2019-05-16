@@ -1,11 +1,11 @@
-#include "socket.h"
-#include "map.h"
+#include <socket.h>
+#include <map.h>
 extern int __bss_end;
 extern void *__brkval;
 int memoryFree();
 
-//#define PUBLISHER_SOCKET
-#define SUBSCRIBER_SOCKET
+#define PUBLISHER_SOCKET
+//#define SUBSCRIBER_SOCKET
 
 #ifdef PUBLISHER_SOCKET
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
@@ -16,7 +16,7 @@ void setup() {
     Serial.begin(115200);
 
     Serial.println("Start ethernet.");
-    while(!Ethernet.begin(mac)) {
+    while(!ZMQEthernet.begin(mac)) {
     }
 
     Serial.print("Start publisher");
@@ -29,9 +29,9 @@ void setup() {
 }
 
 void loop() {
-    char *msg = "head1 1234";
+    char *msg = "head1 Hello!";
     PORTD |= B10000000;
-    publisher.send(msg);
+   // publisher.send(msg);
     PORTD &= (~B10000000);
 }
 

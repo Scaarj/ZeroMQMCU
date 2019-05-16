@@ -68,6 +68,6 @@ public:
   friend class EthernetServer;
 };
 
-extern EthernetClass Ethernet;
+extern EthernetClass ZMQEthernet;
 
 #endif

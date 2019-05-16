@@ -140,7 +140,7 @@ public:
    * the Rx memory uper-bound of socket.
    */
   void read_data(SOCKET s, volatile uint16_t  src, volatile uint8_t * dst, uint16_t len);
-    uint16_t write_data_pub(SOCKET _sock, uint8_t *_buf, uint8_t _len);
+    uint16_t write_data_pub(SOCKET _sock, uint8_t *&_buf, uint8_t _len);
   /**
    * @brief	 This function is being called by send() and sendto() function also. 
    * 
