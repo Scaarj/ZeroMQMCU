@@ -1,8 +1,6 @@
 #include <socket.h>
 #include <map.h>
-extern int __bss_end;
-extern void *__brkval;
-int memoryFree();
+#include <memorytest.h>
 
 #define PUBLISHER_SOCKET
 //#define SUBSCRIBER_SOCKET
@@ -26,6 +24,7 @@ void setup() {
     DDRD |= B10000000;
     PORTD &= (~B10000000);
 
+    Serial.println(memoryFree());
 }
 
 void loop() {
@@ -69,13 +68,3 @@ void loop() {
     zmq::free_msg(msg);
 }
 #endif
-
-int memoryFree()
-{
-    int freeValue;
-    if((int)__brkval == 0)
-        freeValue = ((int)&freeValue) - ((int)&__bss_end);
-    else
-        freeValue = ((int)&freeValue) - ((int)__brkval);
-    return freeValue;
-}
