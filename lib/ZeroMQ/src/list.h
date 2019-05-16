@@ -141,10 +141,9 @@ public:
     }
 
     inline bool remove(const T& item) {
-        _Node *ptr_cur = nullptr;
-
+        _Node *ptr_cur = head;
         while(ptr_cur != end_node()) {
-            if(ptr_cur == item) {
+            if(equalKey(ptr_cur->data, item)) {
                 if(ptr_cur == head && ptr_cur == tail) {
                     head = end_node();
                     tail = end_node();

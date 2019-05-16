@@ -24,13 +24,16 @@ void setup() {
     DDRD |= B10000000;
     PORTD &= (~B10000000);
 
-    Serial.println(memoryFree());
+    my_list<int> test_list;
+    test_list.append(5);
+    test_list.remove(5);
+    Serial.println(test_list.size());
 }
 
 void loop() {
     char *msg = "head1 Hello!";
     PORTD |= B10000000;
-   // publisher.send(msg);
+    publisher.send(msg);
     PORTD &= (~B10000000);
 }
 

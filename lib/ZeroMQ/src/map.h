@@ -34,7 +34,7 @@ public:
 
     my_map() : m_size(0), m_root(nullptr) {}
     D& value(const T &ptr_temp);
-    bool constains(const T& key);
+    bool contains(const T& key);
     void insert(const T& key, const D& data);
     bool remove(const T& key);
     void clear();
@@ -344,7 +344,7 @@ private:
 };
 
 template<typename T, typename D>
-bool my_map<T, D>::constains(const T &key)
+bool my_map<T, D>::contains(const T &key)
 {
     map_node *ptr = m_root;
 

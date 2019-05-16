@@ -107,7 +107,7 @@ void pub_t::subscribe(ZeroMQClient *&ptr_zmq_socket)
         if(type_msg == 0x01) {
             uint8_t socket_bit_mask = (1 << ptr_zmq_socket->sock());
 
-            if(map_subscribes->constains(subscribe)) {
+            if(map_subscribes->contains(subscribe)) {
                 map_subscribes->value(subscribe) |= socket_bit_mask;
                 // delete string if already have this string in map container
                 delete [] subscribe;
