@@ -131,7 +131,7 @@ void unit_testing()
     RUN_TEST(test_list_on_contains_key);
 }
 
-void testing_map()
+void testing_map_on_add_4_and_remove()
 {
     my_map<int, int> map_test;
     map_test.insert(3, 10);
@@ -149,7 +149,7 @@ void testing_map()
     TEST_ASSERT_EQUAL_MESSAGE(0, map_test.size(), "remove 4 nodes from root");
 }
 
-void testing_list()
+void testing_list_on_add_4_and_remove()
 {
     my_list<int> list_test;
     list_test.append(3);
@@ -169,8 +169,8 @@ void testing_list()
 
 void integration_testing()
 {
-    RUN_TEST(testing_map);
-    RUN_TEST(testing_list);
+    RUN_TEST(testing_map_on_add_4_and_remove);
+    RUN_TEST(testing_list_on_add_4_and_remove);
 }
 
 void setup() {
