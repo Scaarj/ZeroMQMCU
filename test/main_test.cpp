@@ -131,17 +131,17 @@ void unit_testing()
     RUN_TEST(test_list_on_contains_key);
 }
 
-void testing_map_on_add_4_and_remove()
+void testing_map_on_add_4_and_remove_from_root()
 {
     my_map<int, int> map_test;
-    map_test.insert(3, 10);
-    map_test.insert(2, 10);
-    map_test.insert(1, 10);
-    map_test.insert(0, 10);
+    for(int i = 3; i >= 0; --i)
+        map_test.insert(i, 10);
+
     TEST_ASSERT_EQUAL_MESSAGE(4, map_test.size(), "add 4 nodes to map");
     for(int i = 0; i < 4; i++) {
         TEST_ASSERT_TRUE(map_test.contains(i));
     }
+    // Remove from root
     map_test.remove(2);
     map_test.remove(1);
     map_test.remove(0);
@@ -149,35 +149,33 @@ void testing_map_on_add_4_and_remove()
     TEST_ASSERT_EQUAL_MESSAGE(0, map_test.size(), "remove 4 nodes from root");
 }
 
-void testing_list_on_add_4_and_remove()
+void testing_list_on_add_4_and_remove_from_head()
 {
     my_list<int> list_test;
-    list_test.append(3);
-    list_test.append(2);
-    list_test.append(1);
-    list_test.append(0);
+    for(int i = 3; i >= 0; --i)
+        list_test.append(i);
+
     TEST_ASSERT_EQUAL_MESSAGE(4, list_test.size(), "add 4 nodes to list");
     for(int i = 0; i < 4; i++) {
         TEST_ASSERT_TRUE(list_test.contains(i));
     }
-    list_test.remove(3);
-    list_test.remove(2);
-    list_test.remove(1);
-    list_test.remove(0);
+
+    for(int i = 3; i >= 0; --i)
+        list_test.remove(i);
     TEST_ASSERT_EQUAL_MESSAGE(0, list_test.size(), "remove 4 nodes from head");
 }
 
 void integration_testing()
 {
-    RUN_TEST(testing_map_on_add_4_and_remove);
-    RUN_TEST(testing_list_on_add_4_and_remove);
+    RUN_TEST(testing_map_on_add_4_and_remove_from_root);
+    RUN_TEST(testing_list_on_add_4_and_remove_from_head);
 }
 
 void setup() {
     delay(2000);
     UNITY_BEGIN();
     unit_testing();
-    integration_testing();
+  //  integration_testing();
     UNITY_END();
 }
 
