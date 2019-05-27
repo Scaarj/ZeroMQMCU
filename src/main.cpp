@@ -20,14 +20,27 @@ void setup() {
     Serial.print("Start publisher");
     publisher.bind(port);
     randomSeed(analogRead(0));
+    analogReference(INTERNAL);
 }
 
+int measure_temp(const int &pin);
+
 void loop() {
-    char *msg = "head1 Hello message";
-    PORTD |= B10000000;
-    publisher.send(msg);
-    PORTD &= (~B10000000);
+    char msg_temp1[20];
+    char msg_temp2[20];
+    sprintf(msg_temp1, "tempture1 %d", measure_temp(A0));
+    sprintf(msg_temp2, "tempture2 %d", measure_temp(A1));
+    publisher.send(msg_temp1);
+    publisher.send(msg_temp2);
     delay(1000);
+}
+
+const float AR0 = 3.81;
+int measure_temp(const int &pin)
+{
+    int value = analogRead(pin);
+    int tempture = value / AR0;
+    return tempture;
 }
 
 #elif defined SUBSCRIBER_SOCKET
