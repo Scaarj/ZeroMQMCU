@@ -2,8 +2,8 @@
 #include <map.h>
 #include <memorytest.h>
 
-#define PUBLISHER_SOCKET
-//#define SUBSCRIBER_SOCKET
+//#define PUBLISHER_SOCKET
+#define SUBSCRIBER_SOCKET
 
 #ifdef PUBLISHER_SOCKET
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
@@ -47,7 +47,7 @@ void setup() {
     Serial.begin(115200);
 
     Serial.println("Start ethernet.");
-    while(!Ethernet.begin(mac)) {
+    while(!ZMQEthernet.begin(mac)) {
     }
 
     Serial.print("Connect subscribe");
@@ -67,7 +67,7 @@ void loop() {
     //PORTD |= B10000000;
     subscriber.recv(msg);
     //PORTD &= (~B10000000);
-    //Serial.println(msg);
+    Serial.println(msg);
     zmq::free_msg(msg);
 }
 #endif
