@@ -2,8 +2,8 @@
 #include <map.h>
 #include <memorytest.h>
 
-//#define PUBLISHER_SOCKET
-#define SUBSCRIBER_SOCKET
+#define PUBLISHER_SOCKET
+//#define SUBSCRIBER_SOCKET
 
 #ifdef PUBLISHER_SOCKET
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
@@ -20,21 +20,14 @@ void setup() {
     Serial.print("Start publisher");
     publisher.bind(port);
     randomSeed(analogRead(0));
-
-    DDRD |= B10000000;
-    PORTD &= (~B10000000);
-
-    my_list<int> test_list;
-    test_list.append(5);
-    test_list.remove(5);
-    Serial.println(test_list.size());
 }
 
 void loop() {
-    char *msg = "head1 Hello!";
+    char *msg = "head1 Hello message";
     PORTD |= B10000000;
     publisher.send(msg);
     PORTD &= (~B10000000);
+    delay(1000);
 }
 
 #elif defined SUBSCRIBER_SOCKET
