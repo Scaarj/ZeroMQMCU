@@ -5,4 +5,4 @@ The maximum speed of sending by the publisher is 2300 messages per second for 1 
 simultaneously, also for 10 bytes of payload. Results are shown for Arduino Uno.
 For building and uploading used platformio (https://platformio.org/), but you can use any other tools.
 
-Papper of implementation https://cloudofscience.ru/sites/default/files/pdf/CoS_6_666.pdf
+Papper of implementation https://cyberleninka.ru/article/n/mikrokontrollernaya-realizatsiya-raspredelennoy-dostavki-zmq-soobscheniy-dlya-interneta-veschey
